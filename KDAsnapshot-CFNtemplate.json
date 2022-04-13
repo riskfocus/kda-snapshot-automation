@@ -13,6 +13,8 @@
                         "EnableSnapshots",
                         "RetentionCount",
                         "EnableAutoScaling",
+                        "s3bucket",
+                        "artifactName",
                         "generateUsersTimer",
                         "pauseBetweenUserGeneration"
                     ]
@@ -33,6 +35,12 @@
                 },
                 "EnableAutoScaling": {
                     "default": "Enable automatic scaling"
+                },
+                "s3bucket": {
+                    "default": "Name of the S3 bucket where application artifacts are"
+                },
+                "artifactName": {
+                    "default": "Name of the application artifact"
                 },
                 "generateUsersTimer": {
                     "default": "How long to generate user data in seconds"
@@ -85,6 +93,12 @@
                 "true",
                 "false"
             ]
+        },
+        "s3bucket": {
+            "Type": "String"
+        },
+        "artifactName": {
+            "Type": "String"
         },
         "generateUsersTimer": {
             "Type": "Number",
@@ -144,7 +158,14 @@
                                                 {
                                                     "Ref": "AWS::Partition"
                                                 },
-                                                ":s3:::flink-snapshot-it-pavlosn/*"
+                                                ":s3:::",
+                                                {
+                                                    "Ref": "s3bucket"
+                                                },
+                                                "/",
+                                                {
+                                                    "Ref": "artifactName"
+                                                }
                                             ]
                                         ]
                                     }
@@ -305,11 +326,16 @@
                                             {
                                                 "Ref": "AWS::Partition"
                                             },
-                                            ":s3:::flink-snapshot-it-pavlosn"
+                                            ":s3:::",
+                                            {
+                                                "Ref": "s3bucket"
+                                            }                                            
                                         ]
                                     ]
                                 },
-                                "FileKey": "flink-snapshot-it-1.0-SNAPSHOT-v2.jar"
+                                "FileKey": {
+                                    "Ref": "artifactName"
+                                }
                             }
                         },
                         "CodeContentType": "ZIPFILE"
