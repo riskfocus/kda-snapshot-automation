@@ -19,6 +19,7 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 ## Step 1
 
 From the /src folder, compile the Java source code to a JAR file, and upload the file to your S3 bucket of choice.
+------------------------------------------------------------------------------------------------------------------
 
 
 ## Step 2: launch CloudFormation stack
@@ -73,6 +74,7 @@ For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin p
 
 
 The CloudFormation stack can now be created.
+--------------------------------------------
 
 
 ## Step 3: start the Java application
@@ -87,5 +89,11 @@ Navigate to the Kinesis Data Analytics page, and select this 'Streaming applicat
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png)
+
+
+On the next page, the following message will appear, since the Java application has not yet run and so no Snapshots have been created.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png)
 
 
