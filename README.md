@@ -56,6 +56,11 @@ Below these parameters are the following three parameters:
   2. Email address for SNS notifications
   3. SNS topic name
 
-
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png)
+
+
+On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources.
+For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png)
 
