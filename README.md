@@ -75,6 +75,7 @@ For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin p
 
 
 The CloudFormation stack can now be created.
+
 --------------------------------------------
 
 
@@ -96,6 +97,7 @@ On the next page, the following message will appear, since the Java application 
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png)
+
 ---------------------------------------------------------------------------------------------
 
 
@@ -118,5 +120,25 @@ From the Fink dashboard, we can see the number of random user records created (3
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
+
+
+From CloudWatch, we can also see the dashboard that has been created with the various widgets.
+
+First, the Java application 'uptime' (and corresponding 'downtime') are shown.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/19.png)
+
+
+Also, the snapshots and checkpoints metrics.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png)
+
+
+Lastly, the number of records is also shown (194), which matches the number of records sent and received in the Flink dashboard.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png)
 
 
