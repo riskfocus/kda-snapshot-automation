@@ -79,7 +79,7 @@ The CloudFormation stack can now be created.
 --------------------------------------------
 
 
-## Step 3: start the Java application
+## Step 3: Start the Java Application
 
 After the CloudFormation stack build has completed, from the Outputs tab, the Kinesis Data Analytics 'ApplicationName' can be found.
 
@@ -101,7 +101,7 @@ On the next page, the following message will appear, since the Java application 
 ---------------------------------------------------------------------------------------------
 
 
-## Step 4: review CloudFormation stack resources
+## Step 4: Review CloudFormation Stack Resources
 
 From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a Snapshot every 10 minutes.
 
@@ -140,5 +140,35 @@ Lastly, the number of records is also shown (194), which matches the number of r
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png)
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
+
+
+Additionally, we can also see the CloudWatch alarms that are set up.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png)
+
+
+---------------------------------------------------------------------------------------------
+
+
+## Step 5: Review the Results
+
+
+From the Kinesis Data Analytics streaming application page, we can see information on Snapshots. In this screen shot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png)
+
+
+After the user-generated 'stop' the Java application can be started again from the 'run' button. For this application start, the latest snapshot can be used, older snapshots, or without a snapshot.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png)
+
+
+From the CloudFormation stack 'resources' tab, the log group and log stream results can be found. Using this information, from CloudWatch logs, information on the Java application can be view.
 
 
