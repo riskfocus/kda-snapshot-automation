@@ -172,3 +172,18 @@ After the user-generated 'stop' the Java application can be started again from t
 From the CloudFormation stack 'resources' tab, the log group and log stream results can be found. Using this information, from CloudWatch logs, information on the Java application can be view.
 
 
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png)
+
+
+From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the Java application was started, in this screen shot there are three records.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png)
+
+
+Looking at the detail of two log events, the top events shows the Java application was restored from context (the application was re-started with state). The bottom events was when the Java application was first started, and there was no Snapshot and hence no state.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png)
+
+
