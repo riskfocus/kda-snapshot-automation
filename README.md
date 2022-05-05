@@ -20,6 +20,7 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
 From the /src folder, compile the Java source code to a JAR file, and upload the file to your S3 bucket of choice.
 
+
 ## Step 2: launch CloudFormation stack
 
 From the CloudFormation landing page, launch a stack with new resources:
@@ -30,10 +31,12 @@ From the CloudFormation landing page, launch a stack with new resources:
 
 The CloudFormation template should be stored in an S3 bucket of your choice, and then copy the object S3 URL of the template object into the CloudFormation template section:
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png)
 
 
 On the next page of the CloudFormation creation process, enter a Stack name:
+
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png)
 
@@ -48,6 +51,7 @@ Below that, there are a number of parameters that can be defined for the CloudFo
   6. How long to generate user data → the Java application creates random user information, and this will be done for X seconds, for example 600 seconds or 10 minutes
   7. Delay between data generation → the time in milliseconds between each random user data record created
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png)
 
 
@@ -57,11 +61,31 @@ Below these parameters are the following three parameters:
   2. Email address for SNS notifications
   3. SNS topic name
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png)
 
 
 On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources.
 For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png)
+
+
+The CloudFormation stack can now be created.
+
+
+## Step 3: start the Java application
+
+After the CloudFormation stack build has completed, from the Outputs tab, the Kinesis Data Analytics 'ApplicationName' can be found.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png)
+
+
+Navigate to the Kinesis Data Analytics page, and select this 'Streaming application'. From the next page, this Java application needs to be started by clicking 'Run' on the right.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png)
+
 
