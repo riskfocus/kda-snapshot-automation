@@ -29,7 +29,7 @@ From the CloudFormation landing page, launch a stack with new resources:
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png" /></kbd>
 
 
 
@@ -37,7 +37,7 @@ The CloudFormation template should be stored in an S3 bucket of your choice, and
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png" /></kbd>
 
 
 
@@ -45,7 +45,7 @@ On the next page of the CloudFormation creation process, enter a Stack name:
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png" /></kbd>
 
 
 
@@ -61,7 +61,7 @@ Below that, there are a number of parameters that can be defined for the CloudFo
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png" /></kbd>
 
 
 
@@ -73,7 +73,7 @@ Below these parameters are the following three parameters:
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png" /></kbd>
 
 
 
@@ -82,7 +82,7 @@ For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin p
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png" /></kbd>
 
 
 
@@ -97,7 +97,7 @@ After the CloudFormation stack build has completed, from the Outputs tab, the Ki
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png" /></kbd>
 
 
 
@@ -105,7 +105,7 @@ Navigate to the Kinesis Data Analytics page, and select this 'Streaming applicat
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png" /></kbd>
 
 
 
@@ -113,7 +113,7 @@ On the next page, the following message will appear, since the Java application 
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png" /></kbd>
 
 ---------------------------------------------------------------------------------------------
 
@@ -124,7 +124,7 @@ From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a 
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png" /></kbd>
 
 
 
@@ -132,7 +132,7 @@ From the Kinesis Data Analystics streaming application page, we can launch the A
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png" /></kbd>
 
 
 
@@ -141,7 +141,7 @@ From the Fink dashboard, we can see the number of random user records created (3
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></kbd>
 
 
 
@@ -151,7 +151,7 @@ First, the Java application 'uptime' (and corresponding 'downtime') are shown.
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/19.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/19.png" /></kbd>
 
 
 
@@ -159,7 +159,7 @@ Also, the snapshots and checkpoints metrics.
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></kbd>
 
 
 
@@ -167,11 +167,11 @@ Lastly, the number of records is also shown (194), which matches the number of r
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></kbd>
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></kbd>
 
 
 
@@ -179,7 +179,7 @@ Additionally, we can also see the CloudWatch alarms that are set up.
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
 
 
 ---------------------------------------------------------------------------------------------
@@ -192,7 +192,7 @@ From the Kinesis Data Analytics streaming application page, we can see informati
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png" /></kbd>
 
 
 
@@ -257,3 +257,7 @@ For each item, the Java application name, the Snapshot name, and other data are 
 
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></kbd>
+
+
+
+## END
