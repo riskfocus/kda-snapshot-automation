@@ -19,6 +19,7 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 ## Step 1
 
 From the /src folder, compile the Java source code to a JAR file, and upload the file to your S3 bucket of choice.
+
 ------------------------------------------------------------------------------------------------------------------
 
 
@@ -104,4 +105,18 @@ From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a 
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png)
+
+
+From the Kinesis Data Analystics streaming application page, we can launch the Apache Flink dashboard to see the activity of the Java application.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png)
+
+
+
+From the Fink dashboard, we can see the number of random user records created (394 in this screen shot).
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
+
 
