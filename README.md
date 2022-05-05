@@ -10,3 +10,4 @@ The CloudFormation template will build:
 - Create an SNS topic for the notification of Snapshot creation events
 - Create a DynamoDB table to detail the Lambda function activities for invoking the snapshot function. These activities are populated into the table
 
+# Deployment Instructions
