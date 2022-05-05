@@ -244,4 +244,16 @@ Looking at the detail of one log event, the message details the number of users 
 
 
 
+Finally, we can explore the data in the DynamoDB table, which details the Lambda function activities for invoking the snapshot function. These activities are populated into a table.
 
+
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></kbd>
+
+
+
+For each item, the Java application name, the Snapshot name, and other data are listed.
+
+
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></kbd>
