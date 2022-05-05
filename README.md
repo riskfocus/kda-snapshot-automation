@@ -230,6 +230,6 @@ Looking at the detail of two log events, the top events shows the Java applicati
 A query can also be run to show the number of events when the Java application created a random user, with each event printing a message for the amount of users.
 
 
-</kbd>
+<kbd>
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png)
 </kbd>
