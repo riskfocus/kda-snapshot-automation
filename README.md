@@ -200,7 +200,7 @@ After the user-generated 'stop' the Java application can be started again from t
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png" /></kbd>
 
 
 
@@ -208,7 +208,7 @@ From the CloudFormation stack 'resources' tab, the log group and log stream resu
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png" /></kbd>
 
 
 
@@ -216,7 +216,7 @@ From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'r
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></kbd>
 
 
 
@@ -224,14 +224,12 @@ Looking at the detail of two log events, the top events shows the Java applicati
 
 
 
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png)
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></kbd>
+
 
 
 A query can also be run to show the number of events when the Java application created a random user, with each event printing a message for the amount of users.
 
 
-<kbd>
-![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png)
-</kbd>
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
