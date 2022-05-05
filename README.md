@@ -50,3 +50,12 @@ Below that, there are a number of parameters that can be defined for the CloudFo
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png)
 
 
+Below these parameters are the following three parameters:
+
+  1. CloudWatch dashboard name
+  2. Email address for SNS notifications
+  3. SNS topic name
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png)
+
