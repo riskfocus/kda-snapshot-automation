@@ -25,4 +25,5 @@ From the CloudFormation landing page, launch a stack with new resources:
 
 ```
 ![Image of  S3 bucket for CloudFormation template file] (https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png)
+
 ```
