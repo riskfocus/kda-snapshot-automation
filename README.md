@@ -47,3 +47,6 @@ Below that, there are a number of parameters that can be defined for the CloudFo
   6. How long to generate user data → the Java application creates random user information, and this will be done for X seconds, for example 600 seconds or 10 minutes
   7. Delay between data generation → the time in milliseconds between each random user data record created
 
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png)
+
+
