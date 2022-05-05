@@ -25,7 +25,14 @@ From the CloudFormation landing page, launch a stack with new resources:
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png)
 
+
 The CloudFormation template should be stored in an S3 bucket, so copy the object S3 URL of the object into the CloudFormation template section:
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png)
+
+
+On the next page of the CloudFormation creation process, enter a Stack name:
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png)
+
 
