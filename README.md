@@ -95,5 +95,13 @@ On the next page, the following message will appear, since the Java application 
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png)
+---------------------------------------------------------------------------------------------
 
+
+## Step 4: review CloudFormation stack resources
+
+From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a Snapshot every 10 minutes.
+
+
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png)
 
