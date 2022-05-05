@@ -23,4 +23,6 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
 From the CloudFormation landing page, launch a stack with new resources:
 
+![Image of Cost Explorer](https://github.com/jimzucker/snowflake-usage-monitor/blob/main/images/METRIC_HISTORY_TREND.png)
+
 ![Image of  S3 bucket for CloudFormation template file] (https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png)
