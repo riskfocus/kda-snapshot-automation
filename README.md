@@ -11,3 +11,15 @@ The CloudFormation template will build:
 - Create a DynamoDB table to detail the Lambda function activities for invoking the snapshot function. These activities are populated into the table
 
 # Deployment Instructions
+
+Using a single CloudFormation template, we will deploy the necessary AWS services to build a Kinesis Data Analytics platform with a Java application, and to automate the creation of Snapshots based on a user-defined timeline.
+
+The CloudFormation template will also build AWS services, including a Lambda function, a CloudWatch dashboard with widgets, an SNS topic and a DynamoDB table to store the snapshotting events.
+
+## Step 1
+
+
+## Step 2: launch CloudFormation stack
+
+From the CloudFormation landing page, launch a stack with new resources:
+
