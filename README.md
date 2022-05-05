@@ -233,3 +233,15 @@ A query can also be run to show the number of events when the Java application c
 
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
+
+
+
+Looking at the detail of one log event, the message details the number of users (random user records) that have been created by the Java application.
+
+
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></kbd>
+
+
+
+
