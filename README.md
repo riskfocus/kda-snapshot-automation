@@ -233,3 +233,5 @@ A query can also be run to show the number of events when the Java application c
 <kbd>
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png)
 </kbd>
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
