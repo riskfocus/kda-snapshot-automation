@@ -28,19 +28,25 @@ From the /src folder, compile the Java source code to a JAR file, and upload the
 From the CloudFormation landing page, launch a stack with new resources:
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png)
+
 
 
 The CloudFormation template should be stored in an S3 bucket of your choice, and then copy the object S3 URL of the template object into the CloudFormation template section:
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png)
+
 
 
 On the next page of the CloudFormation creation process, enter a Stack name:
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png)
+
 
 
 Below that, there are a number of parameters that can be defined for the CloudFormation stack:
@@ -54,7 +60,9 @@ Below that, there are a number of parameters that can be defined for the CloudFo
   7. Delay between data generation → the time in milliseconds between each random user data record created
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png)
+
 
 
 Below these parameters are the following three parameters:
@@ -64,14 +72,18 @@ Below these parameters are the following three parameters:
   3. SNS topic name
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png)
+
 
 
 On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources.
 For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png)
+
 
 
 The CloudFormation stack can now be created.
@@ -84,16 +96,21 @@ The CloudFormation stack can now be created.
 After the CloudFormation stack build has completed, from the Outputs tab, the Kinesis Data Analytics 'ApplicationName' can be found.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png)
+
 
 
 Navigate to the Kinesis Data Analytics page, and select this 'Streaming application'. From the next page, this Java application needs to be started by clicking 'Run' on the right.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png)
 
 
+
 On the next page, the following message will appear, since the Java application has not yet run and so no Snapshots have been created.
+
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png)
@@ -106,20 +123,26 @@ On the next page, the following message will appear, since the Java application 
 From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a Snapshot every 10 minutes.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png)
 
 
+
 From the Kinesis Data Analystics streaming application page, we can launch the Apache Flink dashboard to see the activity of the Java application.
+
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png)
 
 
 
+
 From the Fink dashboard, we can see the number of random user records created (394 in this screen shot).
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
+
 
 
 From CloudWatch, we can also see the dashboard that has been created with the various widgets.
@@ -127,25 +150,33 @@ From CloudWatch, we can also see the dashboard that has been created with the va
 First, the Java application 'uptime' (and corresponding 'downtime') are shown.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/19.png)
+
 
 
 Also, the snapshots and checkpoints metrics.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png)
+
 
 
 Lastly, the number of records is also shown (194), which matches the number of records sent and received in the Flink dashboard.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png)
+
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png)
 
 
+
 Additionally, we can also see the CloudWatch alarms that are set up.
+
 
 
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png)
@@ -160,30 +191,45 @@ Additionally, we can also see the CloudWatch alarms that are set up.
 From the Kinesis Data Analytics streaming application page, we can see information on Snapshots. In this screen shot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png)
+
 
 
 After the user-generated 'stop' the Java application can be started again from the 'run' button. For this application start, the latest snapshot can be used, older snapshots, or without a snapshot.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png)
+
 
 
 From the CloudFormation stack 'resources' tab, the log group and log stream results can be found. Using this information, from CloudWatch logs, information on the Java application can be view.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png)
+
 
 
 From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the Java application was started, in this screen shot there are three records.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png)
+
 
 
 Looking at the detail of two log events, the top events shows the Java application was restored from context (the application was re-started with state). The bottom events was when the Java application was first started, and there was no Snapshot and hence no state.
 
 
+
 ![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png)
 
 
+A query can also be run to show the number of events when the Java application created a random user, with each event printing a message for the amount of users.
+
+
+</kbd>
+![Image of S3 bucket](https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png)
+</kbd>
