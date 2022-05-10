@@ -22,64 +22,54 @@ Ness has created an accelerator in the form of a cloudformation template, with w
 The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon CloudWatch, and a simple KDA application to demonstrate the functionality. These services have been combined into an AWS CloudFormation template that can be deployed in your environment.
 
 The template configures the AWS services required to create Snapshots on an automated schedule and creates for a robust enterprise-grade streaming platform. It then creates a sample KDA Application to demonstrate the functionality is working by creating CloudWatch logs when the application is asked to create a snapshot. 
-
 <insert AWS Arch Diagram Here>
 
 The implementation consists of the following components:
 1.  Lambda function automates the Snapshot creation process via a CloudWatch EventBridge rule and and SNS Topic and uses DynamoDB table to create an audit trail.
-<insert small sample of DynamoDb audit here 3-4 lines)>
 
 2. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots, Checkpoints, and for demo purposes the sample application output.
-<Insert Cloudwatch Dashbaord and alarms here>
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></kbd>
 
 3.  A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboads and alarms. In order to validate the application is creating snapshots we have implimented logging in the sample application when a Savepoint is created to make it easy to do a demo.
-<insert snippet of logs here>
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></kbd>
+
+
+## How the sample application works
+The application randomly does xxxx and publishgin records to yyyy.   We have impilmented logging as follows
+1. In the flink 'xxx' method the applcaiton logs the following messages
+  a. when the application starts without a Snapshot/without Stage look for this string: ""
+  b. When the application is started with a snapshot you will see the following log message: ""
+
+2. When KDA triggers a checkpoint automatically you will see this log: ""
+3. When the API is invoked you will see the following log message: ""
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
 
 
 Using this accelerator template, you can add the ability to create Snapshots to ensure you can recover your application at any time form a know point and not lose any data.
 
+# Feedback
 If you have any feedback please raise issues in the github project and feel free to submit PRs to suggest improvements.
 
 
+# Sample Cloudwatch Dashboard and Log output
 
-# This is the Results of running the cloudformation and starting the application
-
-
-## KDA application page
-We can see information on Snapshots. In this screen shot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
-
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png" /></kbd>
-
-
-After the user-generated 'stop' the Java application can be started again from the 'run' button. For this application start, the latest snapshot can be used, older snapshots, or without a snapshot.
-
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png" /></kbd>
-
-
-## Reviewing Cloudwatch Logs
-
-From the CloudFormation stack 'resources' tab, the log group and log stream results can be found. Using this information, from CloudWatch logs, information on the Java application can be view.
-
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png" /></kbd>
-
-
+## Reviewing Cloudwatch Logs to check Snapshot Operation
 
 From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the Java application was started, in this screen shot there are three records.
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></kbd>
-
-
 
 Looking at the detail of two log events, the top events shows the Java application was restored from context (the application was re-started with state). The bottom events was when the Java application was first started, and there was no Snapshot and hence no state.
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></kbd>
 
 
+## Reviewing Cloudwatch Logs Check Demo Application events generated
 
 A query can also be run to show the number of events when the Java application created a random user, with each event printing a message for the amount of users.
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
-
 
 
 Looking at the detail of one log event, the message details the number of users (random user records) that have been created by the Java application.
@@ -87,16 +77,12 @@ Looking at the detail of one log event, the message details the number of users 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></kbd>
 
 
+## Reviewing Audit log in DynamoDb
 
 Finally, we can explore the data in the DynamoDB table, which details the Lambda function activities for invoking the snapshot function. These activities are populated into a table.
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></kbd>
 
-
-
-For each item, the Java application name, the Snapshot name, and other data are listed.
-
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></kbd>
 
 
 ---------------------------------------------------------------------------------------------
@@ -263,3 +249,58 @@ Additionally, we can also see the CloudWatch alarms that are set up.
 
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
 
+
+# Step 5: Review the Application, metrics and logs
+
+## KDA application page
+We can see information on Snapshots. In this screen shot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png" /></kbd>
+
+
+After the user-generated 'stop' the Java application can be started again from the 'run' button. For this application start, the latest snapshot can be used, older snapshots, or without a snapshot.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png" /></kbd>
+
+
+## Reviewing Cloudwatch Logs
+
+From the CloudFormation stack 'resources' tab, the log group and log stream results can be found. Using this information, from CloudWatch logs, information on the Java application can be view.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png" /></kbd>
+
+
+
+From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the Java application was started, in this screen shot there are three records.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></kbd>
+
+
+
+Looking at the detail of two log events, the top events shows the Java application was restored from context (the application was re-started with state). The bottom events was when the Java application was first started, and there was no Snapshot and hence no state.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></kbd>
+
+
+
+A query can also be run to show the number of events when the Java application created a random user, with each event printing a message for the amount of users.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
+
+
+
+Looking at the detail of one log event, the message details the number of users (random user records) that have been created by the Java application.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></kbd>
+
+
+
+Finally, we can explore the data in the DynamoDB table, which details the Lambda function activities for invoking the snapshot function. These activities are populated into a table.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></kbd>
+
+
+
+For each item, the Java application name, the Snapshot name, and other data are listed.
+
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></kbd>
