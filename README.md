@@ -62,6 +62,7 @@ Using this accelerator template, you can add the ability to create Snapshots to 
 # Feedback
 If you have any feedback, please raise issues in the Github project and feel free to submit PRs to suggest improvements.
 
+---------------------------------------------------------------------------------------------
 
 # Sample Cloudwatch Dashboard and Log output
 
