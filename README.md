@@ -24,15 +24,19 @@ The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon Cl
 The template configures the AWS services required to create Snapshots on an automated schedule and creates for a robust enterprise-grade streaming platform. It then creates a sample KDA Application to demonstrate the functionality is working by creating CloudWatch logs when the application is asked to create a snapshot. 
 <insert AWS Arch Diagram Here>
 
-The implementation consists of the following components:
+# The implementation consists of the following components
 1.  Lambda function automates the Snapshot creation process via a CloudWatch EventBridge rule and and SNS Topic and uses DynamoDB table to create an audit trail.
 
-2. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots, Checkpoints, and for demo purposes the sample application output.
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></kbd>
-
-3.  A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboads and alarms. In order to validate the application is creating snapshots we have implimented logging in the sample application when a Savepoint is created to make it easy to do a demo.
+2.  A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboads and alarms. In order to validate the application is creating snapshots we have implimented logging in the sample application when a Savepoint is created to make it easy to do a demo.
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></kbd>
 
+3. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots, Checkpoints and for demo puposed metrics are included for the demo KDA application.
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></kbd>
+
+4. Cloudwatch alarms are created for
+    a. Snapshot duration (to track problems with increasing times)
+    b. Checkpoint duration and failed Checkpoints
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
 
 ## How the sample application works
 The application randomly does xxxx and publishgin records to yyyy.   We have impilmented logging as follows
