@@ -1,6 +1,11 @@
 # Executive Summary
-To effectively manage a Flink Streaming Application on AWS Kinesis Data Analytics(KDA) and ensure high availability, there are two features in Flink. The first are checkpoints that are fully automated in KDA and used to restart a node in the cluster if there is a failue and the node has to be replaced in the underlying EKS cluster.  The second feature is Flink Savepoints, which KDA calls Snapshots, that is used to restart an appliation after it has be purposefully stopped, or if there is a data problem and the user wants to restart the appliation from a previous point in time.  These operations also need to be monitored to ensure they are running and not taking too long as they impact application performance.
+To effectively manage a Flink Streaming Application on AWS Kinesis Data Analytics(KDA) and ensure high availability, there are two features in Flink. 
 
+The first are checkpoints that are fully automated in KDA and used to restart a node in the cluster if there is a failue and the node has to be replaced in the underlying EKS cluster.  
+
+The second feature is Flink Savepoints, which KDA calls Snapshots, that is used to restart an appliation after it has be purposefully stopped, or if there is a data problem and the user wants to restart the appliation from a previous point in time.  These operations also need to be monitored to ensure they are running and not taking too long as they impact application performance.
+
+Currently some of these features are not managed by the KDA service fully and require implimentation by each applicaiton team.  This project provides an out of the box implimentation to address fully automating the snapshots and requried monitoring.
 
 # Why AWS
 Correctly deploying, managing, scaling and monitoring Flink to ensure High Availabilty and scaling to large numbers of CPUs can be a large undertaking for your DevOps team.  The AWS Kinesis Data Analytics(KDA) is a fully managed service that allows applications teams to deploy and operate flink applications following AWS best practices and scale massively with a fully managed service without having to hire a large devops team.
