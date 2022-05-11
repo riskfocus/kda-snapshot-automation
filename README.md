@@ -5,10 +5,10 @@ The first are checkpoints that are fully automated in KDA and used to restart a 
 
 The second feature is Flink Savepoints, which KDA calls Snapshots. Savepoints are used to restart an application after it has be purposefully stopped or if there is a data problem and the user wants to restart the application from a previous point in time. These operations also need to be monitored to ensure they are running and not taking too long as they impact application performance.
 
-Currently, some of these features are not managed by the KDA service and require implementation by each application team. This project provides an out-of-the-box implementation to address fully automate the snapshots and required monitoring.
+Currently, some of these features are not managed by the KDA service and require implementation by each application team. This project provides an out-of-the-box solution to automate the KDA Snapshot process and monitoring.
 
 # Why AWS
-Correctly deploying, managing, scaling, and monitoring Flink to ensure High Availability and scaling to large numbers of CPUs can be a significant undertaking for your DevOps team. The AWS Kinesis Data Analytics (KDA) is a fully managed service that allows applications teams to deploy and operate Flink applications. KDA follows AWS best practices and can scale applications massively with a fully managed service without hiring a large DevOps team.
+Correctly deploying, managing, scaling, and monitoring Flink to ensure High Availability and scaling to large numbers of CPUs can be a significant undertaking for your DevOps team. The AWS Kinesis Data Analytics (KDA) is a fully managed service that allows applications teams to deploy and operate Flink applications. KDA follows AWS best practices and can scale applications massively with a fully managed service and significantly reduce the burn on a client's DevOps team.
 
 
 # The Challenge
