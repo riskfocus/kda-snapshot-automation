@@ -1,28 +1,28 @@
 # Executive Summary
-To effectively manage a Flink Streaming Application on AWS Kinesis Data Analytics(KDA) and ensure high availability, there are two features in Flink. 
+To effectively manage a Flink Streaming Application on AWS Kinesis Data Analytics (KDA) and ensure high availability, there are two features in Flink. 
 
-The first are checkpoints that are fully automated in KDA and used to restart a node in the cluster if there is a failue and the node has to be replaced in the underlying EKS cluster.  
+The first are checkpoints that are fully automated in KDA and used to restart a node in the cluster if there is a failure and the node must be replaced in the underlying EKS cluster.  
 
-The second feature is Flink Savepoints, which KDA calls Snapshots, that is used to restart an appliation after it has be purposefully stopped, or if there is a data problem and the user wants to restart the appliation from a previous point in time.  These operations also need to be monitored to ensure they are running and not taking too long as they impact application performance.
+The second feature is Flink Savepoints, which KDA calls Snapshots, that is used to restart an application after it has be purposefully stopped, or if there is a data problem and the user wants to restart the application from a previous point in time.  These operations also need to be monitored to ensure they are running and not taking too long as they impact application performance.
 
 Currently some of these features are not managed by the KDA service fully and require implimentation by each applicaiton team.  This project provides an out of the box implimentation to address fully automating the snapshots and requried monitoring.
 
 # Why AWS
-Correctly deploying, managing, scaling and monitoring Flink to ensure High Availabilty and scaling to large numbers of CPUs can be a large undertaking for your DevOps team.  The AWS Kinesis Data Analytics(KDA) is a fully managed service that allows applications teams to deploy and operate flink applications following AWS best practices and scale massively with a fully managed service without having to hire a large devops team.
+Correctly deploying, managing, scaling, and monitoring Flink to ensure High Availabilty and scaling to large numbers of CPUs can be a large undertaking for your DevOps team.  The AWS Kinesis Data Analytics (KDA) is a fully managed service that allows applications teams to deploy and operate flink applications following AWS best practices and scale massively with a fully managed service without having to hire a large devops team.
 
 
 # The Challenge
-The AWS KDA service full automate the creates and mangement of Flink Checkpoints for High Availabiltiy and it creates and manages Snapshot when the application is shut down in an orderly fashion and provides an API to create Snapshots(Flink Savepoints) periodically.  
+The AWS KDA service full automate the creates and management of Flink Checkpoints for High Availability and it creates and manages Snapshot when the application is shut down in an orderly fashion and provides an API to create Snapshots (Flink Savepoints) periodically.  
 
-KDA also publishses metrics on Checkpoint and Snapshot completion and duration.
+KDA also publishes metrics on Checkpoint and Snapshot completion and duration.
 
-It is the each applications responsiblity to impliement the following features to achieve "Operational Readiness" to support and manage a streaming application in production
-1. Invoking the API for Snapshots periodicly for application recovery. This is to handle application level isues that require restating the application from a know point in time if there is a non-recoverable error on the cluster for any reason.
-2. Create Cloudwatch Dashboards and Alarms for monitoring performance of Checkpoints and Snapshots. This is ensure they are running correctly and not taking longer than expected as long running s this will impact overall application performance.
+It is the each applications responsibility to implement the following features to achieve "Operational Readiness" to support and manage a streaming application in production
+1. Invoking the API for Snapshots periodically for application recovery. This is to handle application level issues that require restating the application from a know point in time if there is a non-recoverable error on the cluster for any reason.
+2. Create Cloudwatch Dashboards and Alarms for monitoring performance of Checkpoints and Snapshots. This will ensure they are running correctly and not taking longer than expected as long running s this will impact overall application performance.
 
 
 # The Solution
-Ness has created an accelerator in the form of a cloudformation template, with which you can configure KDA  Snapshots to run at any interval required and creates a cloudwatch dashboard and alarms for monitoring.
+Ness has created an accelerator in the form of a Cloudformation template, with which you can configure KDA  Snapshots to run at any interval required and creates a cloudwatch dashboard and alarms for monitoring.
 
 The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon CloudWatch, and a simple KDA application to demonstrate the functionality. These services have been combined into an AWS CloudFormation template that can be deployed in your environment.
 
@@ -32,7 +32,7 @@ The template configures the AWS services required to create Snapshots on an auto
 # The implementation consists of the following components
 1.  Lambda function automates the Snapshot creation process via a CloudWatch EventBridge rule and and SNS Topic and uses DynamoDB table to create an audit trail.
 
-2.  A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboads and alarms. In order to validate the application is creating snapshots we have implimented logging in the sample application when a Savepoint is created to make it easy to do a demo.
+2.  A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboards and alarms. To validate the application is creating snapshots we have implemented logging in the sample application when a Savepoint is created to make it easy to do a demo.
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></kbd>
 
 3. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots, Checkpoints and for demo puposed metrics are included for the demo KDA application.
@@ -44,8 +44,8 @@ The template configures the AWS services required to create Snapshots on an auto
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
 
 ## How the sample application works
-The application randomly does xxxx and publishgin records to yyyy.   We have impilmented logging as follows
-1. In the flink 'xxx' method the applcaiton logs the following messages
+The application randomly does xxxx and publishing records to yyyy.   We have implemented logging as follows
+1. In the flink 'xxx' method the application logs the following messages
   a. when the application starts without a Snapshot/without Stage look for this string: ""
   b. When the application is started with a snapshot you will see the following log message: ""
 
@@ -58,7 +58,7 @@ The application randomly does xxxx and publishgin records to yyyy.   We have imp
 Using this accelerator template, you can add the ability to create Snapshots to ensure you can recover your application at any time form a know point and not lose any data.
 
 # Feedback
-If you have any feedback please raise issues in the github project and feel free to submit PRs to suggest improvements.
+If you have any feedback, please raise issues in the github project and feel free to submit PRs to suggest improvements.
 
 
 # Sample Cloudwatch Dashboard and Log output
