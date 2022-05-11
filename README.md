@@ -45,7 +45,7 @@ The accelerator consists of the following components:
 
 ---------------------------------------------------------------------------------------------
 
-## How the sample application works
+## How the Demo Application works
 ### User Story
 As a developer I want a simple Java-based application that can be used to demonstrate Flink snapshotting so that we can see that it starts correctly and initializes state from the snapshot.
 
