@@ -12,9 +12,7 @@ Correctly deploying, managing, scaling, and monitoring Flink to ensure High Avai
 
 
 # The Challenge
-The AWS KDA service fully automates the creation and management of Flink Checkpoints for High Availability, and it creates and manages Snapshot when the application is shut down in an orderly fashion and provides an API to create Snapshots (Flink Savepoints) periodically.  
-
-KDA also publishes metrics on Checkpoint and Snapshot completion and duration.
+The AWS KDA service fully automates the creation and management of Flink Checkpoints for High Availability, and it creates and manages Snapshot when the application is shut down in an orderly fashion and provides an API to create Snapshots (Flink Savepoints) periodically. KDA also publishes metrics on Checkpoint and Snapshot completion and duration.
 
 It is the responsibility of each application to implement the following features to achieve "Operational Readiness" to support and manage a streaming application in production.
 1. Invoking the API for Snapshots periodically for application recovery. This is done to handle application-level issues that require restating the application from a known point in time if there is a non-recoverable error on the cluster for any reason.
@@ -22,9 +20,9 @@ It is the responsibility of each application to implement the following features
 
 
 # The Solution
-Ness has created an accelerator in the form of a Cloudformation template, with which you can configure KDA  Snapshots to run at any interval required, and creates a CloudWatch dashboard and alarms for monitoring.
+Ness has created an accelerator in the form of a CloudFormation template, with which you can configure KDA Snapshots to run at any interval required, and creates a CloudWatch dashboard and alarms for monitoring. Using this accelerator template, you can add the ability to create Snapshots to ensure you can recover your application at any time from a know point and not lose any data.
 
-The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon CloudWatch, and a simple KDA application to demonstrate the functionality. These services have been combined into an AWS CloudFormation template that can be deployed in your environment.
+The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon CloudWatch, and a simple KDA application to demonstrate the functionality. These services have been combined into an AWS CloudFormation template that can be deployed in your environment. 
 
 The template configures the AWS services required to create Snapshots on an automated schedule and creates a robust enterprise-grade streaming platform. It then creates a sample KDA Application to demonstrate the functionality is working by creating CloudWatch logs when the application is asked to create a snapshot. 
 <insert AWS Arch Diagram Here>
@@ -45,22 +43,36 @@ The accelerator consists of the following components:
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></p>
 
 
-## How the sample application works
-The application randomly does xxxx and publishes records to yyyy.   We have implemented logging as follows
-1. In the flink 'xxx' method, the application logs the following messages
-  a. when the application starts without a Snapshot/without Stage look for this string: ""
-  b. When the application is started with a snapshot, you will see the following log message: ""
+---------------------------------------------------------------------------------------------
 
-2. When KDA triggers a checkpoint automatically, you will see this log: ""
-3. When the API is invoked, you will see the following log message: ""
+## How the sample application works
+### User Story
+As a developer I want a simple Java-based application that can be used to demonstrate Flink snapshotting so that we can see that it starts correctly and initializes state from the snapshot.
+
+* For demonstration purposes, the app generates random users with information (name and age), and tabulates statistics on the number of people of a certain age and the total amount of users.
+* The application should create log entries to clarify when the application is starting with and without a snapshot and when a snapshot is generated.
+
+
+### Acceptance Criteria
+1. Create a Java-based application that generates user data (name and age) based on a time interval
+2. Application must print a log entry when starting without a Snapshot. 
+* The key phrase: *The application was not restored from context*
+3. Application must print a log entry when starting with a Snapshot. 
+* The key phrase: *The application was restored from context*
+4. When a Snapshot is created log
+* The key phrase: *xxx*
+5. And print out a human-readable table of what is in the value state (total records, sum values) >> a table cannot be printed, we will show the following:
+* Line 1: application stopped >> need to find Flink message when application stopped
+* Line 2: total records processed 257; total values 44
+* Line 3: application started with snapshot
+* Line 4: total records processed 258; total values 45
+* ……. : total records processed 258 + X; total values 45 + X
+* Line 5: application stopped >> need to find Flink message when application stopped
+* Line 6: total records processed 527; total values 124
+
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></p>
 
-
-Using this accelerator template, you can add the ability to create Snapshots to ensure you can recover your application at any time from a know point and not lose any data.
-
-# Feedback
-If you have any feedback, please raise issues in the Github project and feel free to submit PRs to suggest improvements.
 
 ---------------------------------------------------------------------------------------------
 
@@ -95,6 +107,10 @@ Finally, we can explore the data in the DynamoDB table, which details the Lambda
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></p>
 
+---------------------------------------------------------------------------------------------
+
+# Feedback
+If you have any feedback, please raise issues in the Github project and feel free to submit PRs to suggest improvements.
 
 
 ---------------------------------------------------------------------------------------------
