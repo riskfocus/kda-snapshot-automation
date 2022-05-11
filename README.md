@@ -29,7 +29,8 @@ The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon Cl
 The template configures the AWS services required to create Snapshots on an automated schedule and creates for a robust enterprise-grade streaming platform. It then creates a sample KDA Application to demonstrate the functionality is working by creating CloudWatch logs when the application is asked to create a snapshot. 
 <insert AWS Arch Diagram Here>
 
-# The implementation consists of the following components
+The accelerator consists of the following components:
+
 1.  Lambda function automates the Snapshot creation process via a CloudWatch EventBridge rule and and SNS Topic and uses DynamoDB table to create an audit trail.
 
 2.  A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboards and alarms. To validate the application is creating snapshots we have implemented logging in the sample application when a Savepoint is created to make it easy to do a demo.
@@ -42,6 +43,7 @@ The template configures the AWS services required to create Snapshots on an auto
     a. Snapshot duration (to track problems with increasing times)
     b. Checkpoint duration and failed Checkpoints
 <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
+
 
 ## How the sample application works
 The application randomly does xxxx and publishing records to yyyy.   We have implemented logging as follows
