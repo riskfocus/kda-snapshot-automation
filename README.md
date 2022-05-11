@@ -2,8 +2,8 @@
 To effectively manage a Flink Streaming Application on AWS Kinesis Data Analytics(KDA) and ensure high availability, there are two features in Flink. The first are checkpoints that are fully automated in KDA and used to restart a node in the cluster if there is a failue and the node has to be replaced in the underlying EKS cluster.  The second feature is Flink Savepoints, which KDA calls Snapshots, that is used to restart an appliation after it has be purposefully stopped, or if there is a data problem and the user wants to restart the appliation from a previous point in time.  These operations also need to be monitored to ensure they are running and not taking too long as they impact application performance.
 
 
-# Why AWS for Streaming Applications
-AWS offers a massively scalable infrastructure that is highly secure, available, and fault-tolerant. Additionally, the AWS cloud-based resources provide technological, operational, and cost efficiencies compared to companies running their own IT operations. Specifically, AWS has services for streaming data, including MSK (Managed Streaming for Apache Kafka), Kinesis Data Streams for capturing and sending streaming data, and KDA(Kinesis Data Analytics) for Apache Flink to process that streaming data.
+# Why AWS
+Correctly deploying, managing, scaling and monitoring Flink to ensure High Availabilty and scaling to large numbers of CPUs can be a large undertaking for your DevOps team.  The AWS Kinesis Data Analytics(KDA) is a fully managed service that allows applications teams to deploy and operate flink applications following AWS best practices and scale massively with a fully managed service without having to hire a large devops team.
 
 
 # The Challenge
