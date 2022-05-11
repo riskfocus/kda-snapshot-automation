@@ -252,7 +252,7 @@ Lastly, the number of records is also shown (194), which matches the number of r
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></p>
 
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></p>
 
 
 
