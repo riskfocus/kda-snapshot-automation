@@ -34,15 +34,15 @@ The accelerator consists of the following components:
 1. Lambda function automates the Snapshot creation process via a CloudWatch EventBridge rule, an SNS Topic. It uses DynamoDB table to create an audit trail.
 
 2. A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboards and alarms. To validate the application is creating snapshots, we have implemented logging in the sample application when a Savepoint is created to make it easy to do a demo.
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></p>
 
 3. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots and Checkpoints. For demo purposes, metrics are included for the demo KDA application.
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></p>
 
 4. Cloudwatch alarms are created for
     a. Snapshot duration (to track problems with increasing times)
     b. Checkpoint duration and failed Checkpoints
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></p>
 
 
 ## How the sample application works
@@ -54,7 +54,7 @@ The application randomly does xxxx and publishes records to yyyy.   We have impl
 2. When KDA triggers a checkpoint automatically, you will see this log: ""
 3. When the API is invoked, you will see the following log message: ""
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></p>
 
 
 Using this accelerator template, you can add the ability to create Snapshots to ensure you can recover your application at any time from a know point and not lose any data.
@@ -69,30 +69,30 @@ If you have any feedback, please raise issues in the Github project and feel fre
 
 From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the demo application was started; in this screenshot, there are three records.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></p>
 
 Looking at the detail of two log events, the top events show the demo application was restored from context (the application was re-started with state). The bottom event was when the demo application was first started, and there was no Snapshot and hence no state.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></p>
 
 
 ## Reviewing Cloudwatch Logs Check Demo Application events generated
 
 A query can also be run to show the number of events when the demo application created a random user, with each event printing a message for the number of users.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></p>
 
 
 Looking at the detail of one log event, the message details the number of users (random user records) that the demo application has created.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></p>
 
 
 ## Reviewing Audit log in DynamoDb
 
 Finally, we can explore the data in the DynamoDB table, which details the Lambda function activities for invoking the snapshot function. These activities are populated into a table.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></p>
 
 
 
@@ -137,19 +137,19 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
   From the CloudFormation landing page, launch a stack with new resources:
   
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png" /></p>
   
   
   
   The CloudFormation template should be stored in an S3 bucket of your choice, and then copy the object S3 URL of the template object into the CloudFormation template section:
   
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png" /></p>
   
   
   
   On the next page of the CloudFormation creation process, enter a Stack name:
   
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png" /></p>
   
   
   
@@ -165,7 +165,7 @@ The CloudFormation template will also build AWS services, including a Lambda fun
   
   
   
-    <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png" /></kbd>
+    <kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/2.png" /></p>
   
   
   
@@ -175,13 +175,13 @@ The CloudFormation template will also build AWS services, including a Lambda fun
     2. Email address for SNS notifications
     3. SNS topic name
   
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png" /></p>
   
 
   On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources.
   For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
   
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png" /></p>
   
   
   
@@ -194,19 +194,19 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
 After the CloudFormation stack build has been completed, the Kinesis Data Analytics 'ApplicationName' can be found in the Outputs tab.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png" /></p>
 
 
 
 Navigate to the Kinesis Data Analytics page, and select this 'Streaming application'. This demo application needs to be started from the next page by clicking 'Run' on the right.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png" /></p>
 
 
 
 The following message will appear on the next page since the demo application has not yet run, and so no Snapshots have been created.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/5.png" /></p>
 
 ---------------------------------------------------------------------------------------------
 
@@ -215,20 +215,20 @@ The following message will appear on the next page since the demo application ha
 
 From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a Snapshot every 10 minutes.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png" /></p>
 
 
 
 From the Kinesis Data Analytics streaming application page, we can launch the Apache Flink dashboard to see the activity of the demo application.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png" /></p>
 
 
 
 
 We can see the number of random user records created (394 in this screenshot) on the Flink dashboard.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></p>
 
 
 
@@ -237,28 +237,28 @@ From CloudWatch, we can also see the dashboard that has been created with the va
 First, the demo application 'uptime' (and corresponding 'downtime') are shown.
 
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/19.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/19.png" /></p>
 
 
 
 Also, the snapshots and checkpoints metrics.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/20.png" /></p>
 
 
 
 Lastly, the number of records is also shown (194), which matches the number of records sent and received in the Flink dashboard.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/21.png" /></p>
 
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></kbd>
+<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.png" /></p>
 
 
 
 Additionally, we can also see the CloudWatch alarms that are set up.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/8.png" /></p>
 
 
 # Step 5: Review the Application, metrics, and logs
@@ -266,52 +266,52 @@ Additionally, we can also see the CloudWatch alarms that are set up.
 ## KDA application page
 We can see information on Snapshots. In this screenshot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png" /></p>
 
 
 After the user-generated 'stop,' the demo application can be started again from the 'run' button. The latest Snapshot can be used for this application start, older snapshots, or without a snapshot.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/11.png" /></p>
 
 
 ## Reviewing Cloudwatch Logs
 
 From the CloudFormation stack 'resources' tab, the log group and log stream results can be found. Using this information, you can access the  CloudWatch logs to monitor the demo application.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/18.png" /></p>
 
 
 
 From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the demo application was started, in this screenshot, there are three records.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/12a.png" /></p>
 
 
 
 Looking at the detail of two log events, the top events show the demo application was restored from context (the application was re-started with state). The bottom event was when the demo application was first started, and there was no Snapshot and hence no state.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></p>
 
 
 
 A query can also be run to show the number of events when the demo application created a random user. Each event prints a message for the number of users.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></p>
 
 
 
 Looking at the detail of one log event, the message details the number of users (random user records) that the demo application has created.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></p>
 
 
 
 Finally, we can explore the data in the DynamoDB table, which details the Lambda function activities for invoking the snapshot function. These activities are populated into a table.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/22.png" /></p>
 
 
 
 The demo application name, the Snapshot name, and other data are listed for each item.
 
-<kbd><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></kbd>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></p>
