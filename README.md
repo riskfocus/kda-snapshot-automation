@@ -7,10 +7,6 @@ The second feature is Flink Savepoints, which KDA calls Snapshots. Savepoints ar
 
 Currently, some of these features are not managed by the KDA service and require implementation by each application team. This project provides an out-of-the-box solution to automate the KDA Snapshot process and monitoring.
 
-# Why AWS
-Correctly deploying, managing, scaling, and monitoring Flink to ensure High Availability and scaling to large numbers of CPUs can be a significant undertaking for your DevOps team. The AWS Kinesis Data Analytics (KDA) is a fully managed service that allows applications teams to deploy and operate Flink applications. KDA follows AWS best practices and can scale applications massively with a fully managed service and significantly reduce the burn on a client's DevOps team.
-
-
 # The Challenge
 The AWS KDA service fully automates the creation and management of Flink Checkpoints for High Availability, and it creates and manages Snapshot when the application is shut down in an orderly fashion and provides an API to create Snapshots (Flink Savepoints) periodically. KDA also publishes metrics on Checkpoint and Snapshot completion and duration.
 
@@ -18,13 +14,13 @@ It is the responsibility of each application to implement the following features
 1. Invoking the API for Snapshots periodically for application recovery. This is done to handle application-level issues that require restating the application from a known point in time if there is a non-recoverable error on the cluster for any reason.
 2. Create Cloudwatch Dashboards and Alarms to monitor Checkpoints and Snapshots' performance. This will ensure they are running correctly and not taking longer than expected, as long-running checkpoints and snapshots will impact overall application performance.
 
+# Why AWS
+Correctly deploying, managing, scaling, and monitoring Flink to ensure High Availability and scaling to large numbers of CPUs can be a significant undertaking for your DevOps team. The AWS Kinesis Data Analytics (KDA) is a fully managed service that allows applications teams to deploy and operate Flink applications. KDA follows AWS best practices and can scale applications massively with a fully managed service and significantly reduce the burn on a client's DevOps team.
 
 # The Solution
 Ness has created an accelerator in the form of a CloudFormation template, with which you can configure KDA Snapshots to run at any interval required, and creates a CloudWatch dashboard and alarms for monitoring. Using this accelerator template, you can add the ability to create Snapshots to ensure you can recover your application at any time from a know point and not lose any data.
 
-The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon CloudWatch, and a simple KDA application to demonstrate the functionality. These services have been combined into an AWS CloudFormation template that can be deployed in your environment. 
-
-The template configures the AWS services required to create Snapshots on an automated schedule and creates a robust enterprise-grade streaming platform. It then creates a sample KDA Application to demonstrate the functionality is working by creating CloudWatch logs when the application is asked to create a snapshot. 
+The template leverages the KDA API, AWS Lambda, AWS EventBridge rules, Amazon CloudWatch, and a simple KDA application to demonstrate the functionality. These services have been combined into an AWS CloudFormation template that can be deployed in your environment. It also configures the AWS services required to create Snapshots on an automated schedule and creates a robust enterprise-grade streaming platform. It then creates a sample KDA Application to demonstrate the functionality is working by creating CloudWatch logs when the application is asked to create a snapshot. 
 <insert AWS Arch Diagram Here>
 
 The accelerator consists of the following components:
@@ -138,7 +134,7 @@ The CloudFormation template will also build AWS services, including a Lambda fun
   2. Monitoring level → set to 'APPLICATION' as this will provide logs for the demo application activities
   3. Service-triggered Snapshots → left as 'true' to allow Snapshots to be created. This can be changed for testing (if you set it to false, you will see in the metrics and logs snapshots will not be created, and you will get an alarm)
   4. Number of Snapshots to retain → AWS KDA will retain up to 1000 Snapshots, but for testing purposes, this can be left at 10, whereby after 10 Snapshots are created, the oldest Snapshot is deleted when each new Snapshot is created
-  5. Scaling → leave as 'true'
+  5. Scaling → This allows you to enable/disable autoscaling in KDA for testing, but for this demo you can always leave it as 'True', but it maybe a useful feature for deploying real applications.
   6. How long to generate user data(test application) → the demo application creates random user information, and this will be done for X seconds, for example, 600 seconds or 10 minutes
   7. Delay between data generation(test application) → the time in milliseconds between each random user data record created
 
