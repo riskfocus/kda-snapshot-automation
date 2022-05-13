@@ -56,7 +56,7 @@ As a developer I want a simple Java-based application that can be used to demons
 3. Application must print a log entry when starting with a Snapshot. 
 * The key phrase: *The application was restored from context*
 4. When a Snapshot is created log
-* The key phrase: *xxx*
+* The key phrase: *Triggering Savepoint for Job*
 5. And print out a human-readable table of what is in the value state (total records, sum values) >> a table cannot be printed, we will show the following:
 * Line 1: application stopped >> need to find Flink message when application stopped
 * Line 2: total records processed 257; total values 44
@@ -67,7 +67,7 @@ As a developer I want a simple Java-based application that can be used to demons
 * Line 6: total records processed 527; total values 124
 
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/9.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/24.png" /></p>
 
 
 ---------------------------------------------------------------------------------------------
