@@ -187,11 +187,10 @@ The CloudFormation template will also build AWS services, including a Lambda fun
     10. Delay between data generation → time in milliseconds between each random user data record created
   
   
-  
-    <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/211.png" /></p>
-  
-  
-  
+ 
+  <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/211.png" /></p>
+
+
   Below these parameters are the following three parameters:
   
     1. CloudWatch dashboard name
