@@ -30,7 +30,7 @@ The accelerator consists of the following components:
 
 2. A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboards and alarms. To validate the application is creating Snapshots, we have implemented logging in the sample application when a Savepoint is created to make it easy to do a demo. 
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/205.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/214.png" /></p>
 
 3. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots and Checkpoints. For demo purposes, metrics are included for the demo KDA application.
 
@@ -47,31 +47,30 @@ The accelerator consists of the following components:
 ## How the Demo Application works
 
 ### User Story
-As a developer I want a simple Java-based application that can be used to demonstrate Flink snapshotting so that we can see that it starts correctly and initializes state from the snapshot.
+As a developer, I want a simple Flink application that can be used to demonstrate Flink Snapshots so that we can see that it starts correctly and initializes state from the snapshot.
 
-* For demonstration purposes, the app generates random users with information (name and age), and tabulates statistics on the number of people of a certain age and the total amount of users.
-* The application should create log entries to clarify when the application is starting with and without a snapshot and when a snapshot is generated.
+* For demonstration purposes, the app generates random users with information (name and age). It tabulates statistics on the number of people of a certain age and the total number of users.
+* The application should create log entries to clarify when the application starts with and without a Snapshot and when a Snapshot is generated. 
 
 
 ### Acceptance Criteria
-1. Create a Java-based application that generates user data (name and age) based on a time interval
-2. Application must print a log entry when starting without a Snapshot. 
-* The key phrase: *The application was not restored from context*
-3. Application must print a log entry when starting with a Snapshot. 
-* The key phrase: *The application was restored from context*
-4. When a Snapshot is created log
-* The key phrase: *Triggering Savepoint for Job*
-5. And print out a human-readable table of what is in the value state (total records, sum values) >> a table cannot be printed, we will show the following:
-* Line 1: application stopped >> need to find Flink message when application stopped
-* Line 2: total records processed 257; total values 44
-* Line 3: application started with snapshot
-* Line 4: total records processed 258; total values 45
-* ……. : total records processed 258 + X; total values 45 + X
-* Line 5: application stopped >> need to find Flink message when application stopped
-* Line 6: total records processed 527; total values 124
+1. Create a Java Flink application that generates user data (name and age) based on a time interval
+
+2. Print a log entry when starting:
+
+- Starting without a Snapshot. “The application was not restored from context.”
+
+- Starting with a Snapshot. “The application was restored from context.” 
+
+- When a Snapshot is created, log: "Triggering Savepoint for job….” 
+
+- Log what is in the value state (total records, sum values) 
 
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/24.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/215.png" /></p>
+
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/214.png" /></p>
 
 
 ---------------------------------------------------------------------------------------------
@@ -79,6 +78,16 @@ As a developer I want a simple Java-based application that can be used to demons
 # Sample Cloudwatch Dashboard and Log output
 
 ## Reviewing Cloudwatch Logs to check Snapshot Operation
+
+The KDA Snapshot operation is automated based on an AWS EventBridge rule invoking a Lambda function at the specified time interval. The Lambda function then calls the KDA API to initiate the Snapshot process, while also sending statistics to CloudWatch and DynamoDB. To ensure that the Snapshot process is working correctly, CloudWatch alarms are established to track the process, to alarm based on conditions, and to notify via SNS message if the alarm is 'in alarm'.
+
+Firstly, if the KDA application is not running, a Snapshot cannot be taking. At every time interval specified when a Snapshot is to be taken, the following message would then be received via SNS message, starting the Snapshot process is working as expected, but a Snapshot cannot be taken.
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/216g.png</p>
+
+Additionally, if the Snapshot process is not working correctly, the duration of each Snapshot could take longer than expected. The threshold for the alarm is 30 seconds, and so if the Snapshot is taking longer than this threshold, an SNS message would be sent as follows.
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/217.png/p>
 
 From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the demo application was started; in this screenshot, there are three records.
 
@@ -101,7 +110,7 @@ Looking at the detail of one log event, the message details the number of users 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></p>
 
 
-## Reviewing Audit log in DynamoDb
+## Reviewing Audit log in DynamoDB
 
 Finally, we can explore the data in the DynamoDB table, which details the Lambda function activities for invoking the snapshot function. These activities are populated into a table.
 
@@ -120,9 +129,9 @@ If you have any feedback, please raise issues in the Github project and feel fre
 
 The CloudFormation template will build:
 
-- Create a Kinesis Data Analytics platform with demo application
+- Create a Kinesis Data Analytics platform with demo Java application
 - Create a Lambda function with required permission roles
-- Create an EventBridge rule for the automated creation of Snapshots
+- Create an EventBridge rule to invoke the Lambda function and automate the creation of Snapshots
 - Create a log group and log stream as part of KDA platform
 - Create a CloudWatch dashboard with widgets related to KDA uptime, Snapshots, Checkpoints, and records
 - Create a CloudWatch alarm for application downtime, Checkpoints and Snapshots
@@ -157,13 +166,13 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
   From the CloudFormation landing page, launch a stack with new resources:
   
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.jpg" /></p>
   
   
   
   From your S3 bucket, copy the object S3 URL of the template object into the CloudFormation template section:
   
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/14.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/101.jpg" /></p>
   
   
   
@@ -203,7 +212,7 @@ The CloudFormation template will also build AWS services, including a Lambda fun
   On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources.
   For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
   
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/4.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.jpg" /></p>
   
   
   
@@ -216,13 +225,13 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
 After the CloudFormation stack build has been completed, the Kinesis Data Analytics 'ApplicationName' can be found in the Outputs tab.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/16.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.jpg" /></p>
 
 
 
 Navigate to the Kinesis Data Analytics page, and select this 'Streaming application'. This demo application needs to be started from the next page by clicking 'Run' on the right.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.jpg" /></p>
 
 
 
@@ -237,13 +246,13 @@ The following message will appear on the next page since the demo application ha
 
 From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a Snapshot every 10 minutes.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/7.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.jpg" /></p>
 
 
 
 From the Kinesis Data Analytics streaming application page, we can launch the Apache Flink dashboard to see the activity of the demo application.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.jpg" /></p>
 
 
 
@@ -312,7 +321,7 @@ From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'r
 
 Looking at the detail of two log events, the top events show the demo application was restored from context (the application was re-started with state). The bottom event was when the demo application was first started, and there was no Snapshot and hence no state.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/107.jpg" /></p>
 
 
 
@@ -324,7 +333,7 @@ A query can also be run to show the number of events when the demo application c
 
 Looking at the detail of one log event, the message details the number of users (random user records) that the demo application has created.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/108.jpg" /></p>
 
 
 
