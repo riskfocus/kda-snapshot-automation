@@ -95,7 +95,7 @@ From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'r
 
 Looking at the detail of two log events, the top events show the demo application was restored from context (the application was re-started with state). The bottom event was when the demo application was first started, and there was no Snapshot and hence no state.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/107.jpg" /></p>
 
 
 ## Reviewing Cloudwatch Logs Check Demo Application events generated
@@ -107,7 +107,7 @@ A query can also be run to show the number of events when the demo application c
 
 Looking at the detail of one log event, the message details the number of users (random user records) that the demo application has created.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/105.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/108.jpg" /></p>
 
 
 ## Reviewing Audit log in DynamoDB
