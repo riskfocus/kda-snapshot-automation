@@ -83,11 +83,15 @@ The KDA Snapshot operation is automated based on an AWS EventBridge rule invokin
 
 Firstly, if the KDA application is not running, a Snapshot cannot be taking. At every time interval specified when a Snapshot is to be taken, the following message would then be received via SNS message, starting the Snapshot process is working as expected, but a Snapshot cannot be taken.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/216g.png</p>
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/216.png" /></p>
+
 
 Additionally, if the Snapshot process is not working correctly, the duration of each Snapshot could take longer than expected. The threshold for the alarm is 30 seconds, and so if the Snapshot is taking longer than this threshold, an SNS message would be sent as follows.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/217.png/p>
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/217.png" /></p>
+
 
 From CloudWatch Log Insights, and using the Log Group from the CloudFormation 'resources' tab, a query can be run to show when the demo application was started; in this screenshot, there are three records.
 
@@ -143,13 +147,17 @@ Using a single CloudFormation template, we will deploy the necessary AWS service
 The CloudFormation template will also build AWS services, including a Lambda function, a CloudWatch dashboard with widgets, an SNS topic and a DynamoDB table to store the snapshotting events.
 
 ## The CloudFormation document takes the following parameters
+
   1. Log monitoring level → set to 'INFO' to see all events, such as each record that is created
   2. Monitoring level → set to 'APPLICATION' as this will provide logs for the demo application activities
   3. Service-triggered Snapshots → left as 'true' to allow Snapshots to be created. This can be changed for testing (if you set it to false, you will see in the metrics and logs snapshots will not be created, and you will get an alarm)
   4. Number of Snapshots to retain → AWS KDA will retain up to 1000 Snapshots, but for testing purposes, this can be left at 10, whereby after 10 Snapshots are created, the oldest Snapshot is deleted when each new Snapshot is created
   5. Scaling → This allows you to enable/disable autoscaling in KDA for testing, but for this demo you can always leave it as 'True', but it maybe a useful feature for deploying real applications.
-  6. How long to generate user data(test application) → the demo application creates random user information, and this will be done for X seconds, for example, 600 seconds or 10 minutes
-  7. Delay between data generation(test application) → the time in milliseconds between each random user data record created
+  6. S3 bucket → the name of the bucket where the files are located
+  7. Java application → the name of the JAR file created
+  8. Lambda code → the name of the Zip file with the Lambda code
+  9. How long to generate user data(test application) → the demo application creates random user information, and this will be done for X seconds, for example, 600 seconds or 10 minutes
+  10. Delay between data generation(test application) → the time in milliseconds between each random user data record created
 
 
 ## Step 1
@@ -164,59 +172,56 @@ The CloudFormation template will also build AWS services, including a Lambda fun
 
 ## Step 2: launch CloudFormation stack
 
-  From the CloudFormation landing page, launch a stack with new resources:
-  
+From the CloudFormation landing page, launch a stack with new resources:
+
+
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/100.jpg" /></p>
+ 
   
-  
-  
-  From your S3 bucket, copy the object S3 URL of the template object into the CloudFormation template section:
+From your S3 bucket, copy the object S3 URL of the template object into the CloudFormation template section:
   
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/101.jpg" /></p>
   
   
-  
-  On the next page of the CloudFormation creation process, enter a Stack name:
-  
+On the next page of the CloudFormation creation process, enter a Stack name:
+
+
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/1.png" /></p>
   
-  
-  
-  Below that, there are a number of parameters that can be defined for the CloudFormation stack:
-  
-    1. Log monitoring level → set to 'INFO' to see all events, such as each record that is created
-    2. Monitoring level → set to 'APPLICATION' as this will provide logs for the demo application activities
-    3. Service-triggered Snapshots → leave as 'true' to allow Snapshots to be created
-    4. Number of Snapshots to retain → AWS KDA will retain up to 1000 Snapshots, but for testing purposes, this can be left at 10, whereby after 10 Snapshots are created, the oldest Snapshot is deleted when each new Snapshot is created
-    5. Scaling → leave as 'true', which would allow the KDA application to scale
-    6. S3 bucket → the name of the bucket where the files are located
-    7. Java application → the name of the JAR file created
-    8. Lambda code → the name of the Zip file with the Lambda code
-    9. How long to generate user data → the demo application creates random user information, and this will be done for X seconds, for example, 600 seconds or 10 minutes
-    10. Delay between data generation → time in milliseconds between each random user data record created
-  
-  
  
-  <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/211.png" /></p>
-
-
-  Below these parameters are the following three parameters:
+Below that, there are a number of parameters that can be defined for the CloudFormation stack:
   
-    1. CloudWatch dashboard name
-    2. Email address for SNS notifications
-    3. SNS topic name
+  1. Log monitoring level → set to 'INFO' to see all events, such as each record that is created
+  2. Monitoring level → set to 'APPLICATION' as this will provide logs for the demo application activities
+  3. Service-triggered Snapshots → leave as 'true' to allow Snapshots to be created
+  4. Number of Snapshots to retain → AWS KDA will retain up to 1000 Snapshots, but for testing purposes, this can be left at 10, whereby after 10 Snapshots are created, the oldest Snapshot is deleted when each new Snapshot is created
+  5. Scaling → This allows you to enable/disable autoscaling in KDA for testing, but for this demo you can always leave it as 'True', but it maybe a useful feature for deploying real applications.
+  6. S3 bucket → the name of the bucket where the files are located
+  7. Java application → the name of the JAR file created
+  8. Lambda code → the name of the Zip file with the Lambda code
+  9. How long to generate user data → the demo application creates random user information, and this will be done for X seconds, for example, 600 seconds or 10 minutes
+  10. Delay between data generation → time in milliseconds between each random user data record created
+
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/211.png" /></p>
+
+
+Below these parameters are the following three parameters:
+  
+  1. CloudWatch dashboard name
+  2. Email address for SNS notifications
+  3. SNS topic name
   
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/3.png" /></p>
   
 
-  On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources.
-  For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
-  
+On the next page of the CloudFormation creation process, set an IAM role to allow the CloudFormation process to create all necessary resources. For the purpose of this demonstration, the role 'cloudformationKDA' has 'admin privileges'.
+
+
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/102.jpg" /></p>
   
   
-  
-  The CloudFormation stack can now be created.
+The CloudFormation stack can now be created.
 
 --------------------------------------------
 
@@ -228,11 +233,10 @@ After the CloudFormation stack build has been completed, the Kinesis Data Analyt
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/103.jpg" /></p>
 
 
-
 Navigate to the Kinesis Data Analytics page, and select this 'Streaming application'. This demo application needs to be started from the next page by clicking 'Run' on the right.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.jpg" /></p>
 
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/104.jpg" /></p>
 
 
 The following message will appear on the next page since the demo application has not yet run, and so no Snapshots have been created.
@@ -253,7 +257,6 @@ From CloudWatch EventBridge, we can see the 'kda-snapshots' rule for creating a 
 From the Kinesis Data Analytics streaming application page, we can launch the Apache Flink dashboard to see the activity of the demo application.
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/106.jpg" /></p>
-
 
 
 
@@ -295,7 +298,15 @@ Additionally, we can also see the CloudWatch alarms that are set up.
 # Step 5: Review the Application, metrics, and logs
 
 ## KDA application page
-We can see information on Snapshots. In this screenshot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
+
+
+Once the KDA application has been started, the Snapshots will be created based on the specified interval, for example, every 10 minutes. The EventBridge rule will invoke the Lambda function at this interval, and Lambda will call the KDA to create a Snapshot, and this will be logged as shown here.
+
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/214.png" /></p>
+
+
+We can see information on Snapshots from the KDA overview page. In this screenshot, it can be seen that four automated Snapshots have been created every 10 minutes, as well as a snapshot from a user-generated application 'stop'.
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/10.png" /></p>
 
