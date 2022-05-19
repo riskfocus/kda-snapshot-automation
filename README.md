@@ -346,3 +346,5 @@ Finally, we can explore the data in the DynamoDB table, which details the Lambda
 The demo application name, the Snapshot name, and other data are listed for each item.
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/23.png" /></p>
+
+test
