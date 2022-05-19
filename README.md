@@ -22,7 +22,7 @@ Correctly deploying, managing, scaling, and monitoring Flink to ensure High Avai
 # The Solution
 Ness has created an accelerator in the form of a CloudFormation template, and Github Repo(click here) with which you can configure KDA Snapshots to run at any time interval required using a Lambda function and create CloudWatch dashboards and alarms for monitoring. This will ensure you can recover your application at any time from a known point and not lose data. 
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/212.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/212.png" /></p>
 
 The accelerator consists of the following components:
 
@@ -30,17 +30,17 @@ The accelerator consists of the following components:
 
 2. A demo KDA application is created that allows you to test the Lambda function and Cloudwatch dashboards and alarms. To validate the application is creating Snapshots, we have implemented logging in the sample application when a Savepoint is created to make it easy to do a demo. 
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/214.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/214.png" /></p>
 
 3. CloudWatch dashboard is created to report on the performance statistics of the KDA application, including Snapshots and Checkpoints. For demo purposes, metrics are included for the demo KDA application.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/206.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/206.png" /></p>
 
 4. CloudWatch alarms are created for Snapshot duration (to track problems with increasing times and Checkpoint duration and failed Checkpoints.
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/210.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/210.png" /></p>
 
-<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/Images/209.png" /></p>
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/209.png" /></p>
 
 ---------------------------------------------------------------------------------------------
 
@@ -300,7 +300,7 @@ Additionally, we can also see the CloudWatch alarms that are set up.
 ## KDA application page
 
 
-Once the KDA application has been started, the Snapshots will be created based on the specified interval, for example, every 10 minutes. The EventBridge rule will invoke the Lambda function at this interval, and Lambda will call the KDA to create a Snapshot, and this will be logged as shown here.
+Once the KDA application has been started, the Snapshots will be created based on the specified interval, for example, every 10 minutes. The EventBridge rule will invoke the Lambda function at this interval, and Lambda will call the KDA to create a Snapshot ("triggering savepoint"), and this will be logged as shown here.
 
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/214.png" /></p>
