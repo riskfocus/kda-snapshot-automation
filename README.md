@@ -243,6 +243,7 @@ The following message will appear on the next page since the demo application ha
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/5.png" /></p>
 
+
 ---------------------------------------------------------------------------------------------
 
 
@@ -314,6 +315,12 @@ We can see information on Snapshots from the KDA overview page. In this screensh
 After the user-generated 'stop,' the demo application can be started again from the 'run' button. The latest Snapshot can be used for this application start, older snapshots, or without a snapshot.
 
 <p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/11.png" /></p>
+
+
+If there was a user-generated 'force stop' of the the application, no Snapshot will be created. When the demo application is started again only the last automated Snapsnot can be used.
+
+
+<p align="center"><img src="https://github.com/riskfocus/rfs-kda-snapshot/blob/master/images/219.png" /></p>
 
 
 ## Reviewing Cloudwatch Logs
